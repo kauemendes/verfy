@@ -20,7 +20,7 @@ class DevelopmentConfig(BaseConfig):
     DEBUG = True
     BCRYPT_LOG_ROUNDS = 4
     WTF_CSRF_ENABLED = False
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'dev.sqlite')
+    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root@127.0.0.1/lux"
     DEBUG_TB_ENABLED = True
 
 
@@ -30,7 +30,7 @@ class TestingConfig(BaseConfig):
     TESTING = True
     BCRYPT_LOG_ROUNDS = 4
     WTF_CSRF_ENABLED = False
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///'
+    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root@127.0.0.1/lux"
     DEBUG_TB_ENABLED = False
     PRESERVE_CONTEXT_ON_EXCEPTION = False
 
@@ -39,5 +39,5 @@ class ProductionConfig(BaseConfig):
     """Production configuration."""
     SECRET_KEY = 'my_precious'
     DEBUG = False
-    SQLALCHEMY_DATABASE_URI = 'postgresql://localhost/example'
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///'
     DEBUG_TB_ENABLED = False
