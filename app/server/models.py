@@ -1,14 +1,14 @@
-# project/server/models.py
+# app/server/models.py
 
 
 import datetime
 
-from project.server import app, db, bcrypt
+from app.server import app, db, bcrypt
 
 
 class User(db.Model):
 
-    __tablename__ = "users"
+    __tablename__ = "auth_users"
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     email = db.Column(db.String(255), unique=True, nullable=False)

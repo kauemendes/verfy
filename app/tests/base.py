@@ -1,16 +1,16 @@
-# project/server/tests/base.py
+# app/server/tests/base.py
 
 
 from flask_testing import TestCase
 
-from project.server import app, db
-from project.server.models import User
+from app.server import app, db
+from app.server.models import User
 
 
 class BaseTestCase(TestCase):
 
     def create_app(self):
-        app.config.from_object('project.server.config.TestingConfig')
+        app.config.from_object('app.server.config.TestingConfig')
         return app
 
     def setUp(self):

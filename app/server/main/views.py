@@ -1,4 +1,4 @@
-# project/server/main/views.py
+# app/server/main/views.py
 
 
 #################

@@ -13,16 +13,16 @@ Flask starter project...
 
 ### Set Environment Variables
 
-Update *project/server/config.py*, and then run:
+Update *app/server/config.py*, and then run:
 
 ```sh
-$ export APP_SETTINGS="project.server.config.DevelopmentConfig"
+$ export APP_SETTINGS="app.server.config.DevelopmentConfig"
 ```
 
 or
 
 ```sh
-$ export APP_SETTINGS="project.server.config.ProductionConfig"
+$ export APP_SETTINGS="app.server.config.ProductionConfig"
 ```
 
 ### Create DB

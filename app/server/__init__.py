@@ -1,4 +1,4 @@
-# project/server/__init__.py
+# app/server/__init__.py
 
 
 #################
@@ -26,7 +26,7 @@ app = Flask(
 )
 
 
-app_settings = os.getenv('APP_SETTINGS', 'project.server.config.DevelopmentConfig')
+app_settings = os.getenv('APP_SETTINGS', 'app.server.config.DevelopmentConfig')
 app.config.from_object(app_settings)
 
 
@@ -46,8 +46,8 @@ db = SQLAlchemy(app)
 ### blueprints ####
 ###################
 
-from project.server.user.views import user_blueprint
-from project.server.main.views import main_blueprint
+from app.server.user.views import user_blueprint
+from app.server.main.views import main_blueprint
 app.register_blueprint(user_blueprint)
 app.register_blueprint(main_blueprint)
 
@@ -56,7 +56,7 @@ app.register_blueprint(main_blueprint)
 ### flask-login ####
 ###################
 
-from project.server.models import User
+from app.server.models import User
 
 login_manager.login_view = "user.login"
 login_manager.login_message_category = 'danger'
