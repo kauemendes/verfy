@@ -1,4 +1,4 @@
-# project/server/tests/test_user.py
+# app/server/tests/test_user.py
 
 
 import datetime
@@ -7,9 +7,9 @@ import unittest
 from flask_login import current_user
 
 from base import BaseTestCase
-from project.server import bcrypt
-from project.server.models import User
-from project.server.user.forms import LoginForm
+from app.server import bcrypt
+from app.server.models import User
+from app.server.user.forms import LoginForm
 
 
 class TestUserBlueprint(BaseTestCase):
