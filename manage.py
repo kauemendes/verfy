@@ -1,12 +1,13 @@
+#!/usr/bin/env python
 # manage.py
 
 
 import os
 import unittest
-import coverage
 
-from flask_script import Manager
+import coverage
 from flask_migrate import Migrate, MigrateCommand
+from flask_script import Manager
 
 COV = coverage.coverage(
     branch=True,
@@ -20,7 +21,8 @@ COV = coverage.coverage(
 COV.start()
 
 from app.server import app, db
-from app.server.models import User
+from app.server.user.models import User, UsersExt
+from app.server.verfy.models import Urls
 
 
 migrate = Migrate(app, db)

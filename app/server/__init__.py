@@ -8,10 +8,10 @@
 import os
 
 from flask import Flask, render_template
-from flask_login import LoginManager
 from flask_bcrypt import Bcrypt
-from flask_debugtoolbar import DebugToolbarExtension
 from flask_bootstrap import Bootstrap
+from flask_debugtoolbar import DebugToolbarExtension
+from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 
 
@@ -47,8 +47,10 @@ db = SQLAlchemy(app)
 ###################
 
 from app.server.user.views import user_blueprint
+from app.server.verfy.views import verfy_blueprint
 from app.server.main.views import main_blueprint
 app.register_blueprint(user_blueprint)
+app.register_blueprint(verfy_blueprint)
 app.register_blueprint(main_blueprint)
 
 
@@ -56,7 +58,7 @@ app.register_blueprint(main_blueprint)
 ### flask-login ####
 ###################
 
-from app.server.models import User
+from app.server.user.models import User
 
 login_manager.login_view = "user.login"
 login_manager.login_message_category = 'danger'

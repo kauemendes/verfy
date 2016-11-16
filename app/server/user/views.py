@@ -10,8 +10,8 @@ from flask import render_template, Blueprint, url_for, \
 from flask_login import login_user, logout_user, login_required
 
 from app.server import bcrypt, db
-from app.server.models import User
 from app.server.user.forms import LoginForm, RegisterForm
+from app.server.user.models import User
 
 ################
 #### config ####

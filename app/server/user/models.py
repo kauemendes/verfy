@@ -1,4 +1,4 @@
-# app/server/models.py
+# app/server/user/models.py
 
 
 import datetime
@@ -16,6 +16,8 @@ class User(db.Model):
     registered_on = db.Column(db.DateTime, nullable=False)
     admin = db.Column(db.Boolean, nullable=False, default=False)
     user_ext = db.relationship('UsersExt', backref='users_ext',
+                                lazy='joined', uselist=False)
+    urls = db.relationship('Urls', backref='urls',
                                 lazy='joined', uselist=False)
 
     def __init__(self, email, password, admin=False):
@@ -47,7 +49,7 @@ class UsersExt(db.Model):
     __tablename__ = "users_ext"
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    user_id = db.Column(db.integer, db.ForeignKey('users.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     user_nicename = db.Column(db.String(255), nullable=False)
     user_url = db.Column(db.String(255), nullable=False)
     user_activation_key = db.Column(db.String(255), nullable=False)

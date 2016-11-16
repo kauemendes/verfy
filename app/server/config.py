@@ -20,7 +20,7 @@ class DevelopmentConfig(BaseConfig):
     DEBUG = True
     BCRYPT_LOG_ROUNDS = 4
     WTF_CSRF_ENABLED = False
-    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root@127.0.0.1/lux"
+    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root@127.0.0.1/verfy"
     DEBUG_TB_ENABLED = True
 
 
@@ -30,7 +30,7 @@ class TestingConfig(BaseConfig):
     TESTING = True
     BCRYPT_LOG_ROUNDS = 4
     WTF_CSRF_ENABLED = False
-    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root@127.0.0.1/lux"
+    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root@127.0.0.1/verfy"
     DEBUG_TB_ENABLED = False
     PRESERVE_CONTEXT_ON_EXCEPTION = False
 
