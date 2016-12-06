@@ -15,10 +15,8 @@ class User(db.Model):
     password = db.Column(db.String(255), nullable=False)
     registered_on = db.Column(db.DateTime, nullable=False)
     admin = db.Column(db.Boolean, nullable=False, default=False)
-    user_ext = db.relationship('UsersExt', backref='users_ext',
-                                lazy='joined', uselist=False)
-    urls = db.relationship('Urls', backref='urls',
-                                lazy='joined', uselist=False)
+    user_ext = db.relationship('UsersExt', backref='users_ext',  lazy='joined', uselist=False)
+    urls = db.relationship('Urls', backref='urls', lazy='joined', uselist=False)
 
     def __init__(self, email, password, admin=False):
         self.email = email
@@ -50,24 +48,24 @@ class UsersExt(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    user_nicename = db.Column(db.String(255), nullable=False)
-    user_url = db.Column(db.String(255), nullable=False)
-    user_activation_key = db.Column(db.String(255), nullable=False)
-    user_status = db.Column(db.Boolean, nullable=False)
-    created_at = db.Column(db.DateTime, server_default=db.func.now())
-    updated_at = db.Column(db.DateTime, server_default=db.func.now())
+    nicename = db.Column(db.String(255), nullable=True)
+    url = db.Column(db.String(255), nullable=True)
+    activation_key = db.Column(db.String(255), nullable=True)
+    status = db.Column(db.Boolean, nullable=True)
+    facebook_id = db.Column(db.String(255), nullable=True)
+    created_at = db.Column(db.DateTime, default=datetime.datetime.now, nullable=True)
+    updated_at = db.Column(db.DateTime, default=datetime.datetime.now, onupdate=datetime.datetime.now, nullable=True)
 
-    def __init__(self, user_id, user_nicename, user_url, user_activation_key, user_status, created_at, updated_at):
+    def __init__(self, user_id, nicename, activation_key, facebook_id, status=False, url=None):
         self.user_id = user_id
-        self.user_nicename = user_nicename
-        self.user_url = user_url
-        self.user_activation_key = user_activation_key
-        self.user_status = user_status
-        self.created_at = created_at
-        self.updated_at = updated_at
+        self.nicename = nicename
+        self.activation_key = activation_key
+        self.status = status
+        self.facebook_id = facebook_id
+        self.url = url
 
     def has_activated(self):
-        return self.user_activation_key is not None
+        return self.activation_key is not None
 
     def get_id(self):
         return self.id

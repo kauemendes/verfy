@@ -24,7 +24,6 @@ from app.server import app, db
 from app.server.user.models import User, UsersExt
 from app.server.verfy.models import Urls
 
-
 migrate = Migrate(app, db)
 manager = Manager(app)
 
@@ -77,6 +76,9 @@ def drop_db():
 def create_admin():
     """Creates the admin user."""
     db.session.add(User(email='ad@min.com', password='admin', admin=True))
+    user = User.query.filter_by(email='ad@min.com').first()
+    db.session.add(UsersExt(user_id=user.id, nicename='Admin Do Portal', activation_key=hash('superadmin'), status=True,
+                            facebook_id=None))
     db.session.commit()
 
 
